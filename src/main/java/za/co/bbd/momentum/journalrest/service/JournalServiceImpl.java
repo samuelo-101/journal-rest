@@ -27,6 +27,13 @@ public class JournalServiceImpl implements JournalService {
     private UserRepository userRepository;
 
     @Override
+    public JournalDTO fetchById(Long journalId) {
+        Journal journal = journalRepository.getOne(journalId);
+        if(journal == null) return null;
+        return mapper.map(journal, JournalDTO.class);
+    }
+
+    @Override
     public List<JournalDTO> fetchAllByUserId(Long userId) {
         List<JournalDTO> response = new ArrayList<>();
         List<Journal> journals = journalRepository.findAllByUserId(userId);

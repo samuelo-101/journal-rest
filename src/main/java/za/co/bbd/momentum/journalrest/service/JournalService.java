@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface JournalService {
 
+    JournalDTO fetchById(Long journalId);
     List<JournalDTO> fetchAllByUserId(Long userId);
     List<JournalDTO> fetchAll();
 

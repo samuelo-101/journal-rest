@@ -19,6 +19,12 @@ public class JournalController {
     @Autowired
     private JournalService journalService;
 
+    @GetMapping("/{id}")
+    public ResponseEntity<JournalDTO> fetchById(@PathVariable("id") Long journalId) {
+        JournalDTO journalDTO = journalService.fetchById(journalId);
+        return new ResponseEntity<>(journalDTO, HttpStatus.OK);
+    }
+
     @GetMapping("/list/{userId}")
     public ResponseEntity<List<JournalDTO>> fetchAllForUser(@PathVariable("userId") Long userId) {
         List<JournalDTO> journalDTOs = journalService.fetchAllByUserId(userId);
