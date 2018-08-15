@@ -28,7 +28,7 @@ public class UserController {
         UserDTO userDTO = userService.login(loginRequest);
 
 	if(userDTO == null) {
-		return new ResponseEntity(HttpStatus.BAD_REQUEST);
+		return new ResponseEntity(HttpStatus.UNAUTHORIZED);
 	}
         LoginResponse loginResponse = new LoginResponse();
         loginResponse.setUser(userDTO);
